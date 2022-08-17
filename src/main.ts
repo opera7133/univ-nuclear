@@ -34,9 +34,10 @@ const search = async () => {
             return data.id
         }
     });
-    const eqData = await axios.get(eq[0])
-    //const eqData = await axios.get("https://www.data.jma.go.jp/developer/xml/data/20220815110016_0_VXSE53_270000.xml")
-    if (eqData) {
+
+    if (eq[0]) {
+        const eqData = await axios.get(eq[0])
+        //const eqData = await axios.get("https://www.data.jma.go.jp/developer/xml/data/20220815110016_0_VXSE53_270000.xml")
         const eqDataContent = parser.parse(eqData.data).Report.Body
         const location = eqDataContent.Earthquake.Hypocenter.Area["jmx_eb:Coordinate"].match(/^[\+]?([\-]?[0-9]*\.[0-9])[\+]?([\-]?[0-9]*\.[0-9])(\-[0-9]*)\/$/)
         const latitude = location[1]
