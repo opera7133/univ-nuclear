@@ -32,6 +32,8 @@ const search = async () => {
     const eq = listContent.map((data: eqvol) => {
         if (data.title.includes("震源・震度")) {
             return data.id
+        } else {
+            return false
         }
     });
 
@@ -66,9 +68,8 @@ const search = async () => {
             }
         }
     }
-
 }
 
-cron.schedule('* * * * *', () => {
-    search()
-})
+//cron.schedule('* * * * *', () => {
+search()
+//})
