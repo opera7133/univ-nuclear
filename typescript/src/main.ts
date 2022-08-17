@@ -70,6 +70,6 @@ const search = async () => {
     }
 }
 
-//cron.schedule('* * * * *', () => {
-search()
-//})
+cron.schedule('* * * * *', () => {
+    search()
+})
