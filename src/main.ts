@@ -56,7 +56,7 @@ const search = async () => {
                 if (univ && univ[1]) {
                     const tw = `${univ.slice(-1)[0].trim()}は核実験をやめろ`
                     console.log(tw)
-                    //await userClient.v1.tweet(tw)
+                    await userClient.v1.tweet(tw)
                 } else {
                     console.error("大学名の抽出ができません", univName)
                 }
