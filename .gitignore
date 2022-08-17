@@ -1,4 +1,4 @@
 build
 node_modules
 .env
-config/default.json5
+default.json5
