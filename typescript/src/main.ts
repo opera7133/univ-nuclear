@@ -29,8 +29,11 @@ const search = async () => {
     const parser = new XMLParser()
     const list = await axios.get('https://www.data.jma.go.jp/developer/xml/feed/eqvol.xml')
     const listContent = parser.parse(list.data).feed.entry
+    const now = new Date()
     const eq = listContent.map((data: eqvol) => {
-        if (data.title.includes("震源・震度")) {
+        const occurTime = new Date(data.updated)
+        const diff = Number((now - occurTime) / (60*1000))
+        if (data.title.includes("震源・震度") && diff <= 3) {
             return data.id
         } else {
             return false
