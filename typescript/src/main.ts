@@ -32,7 +32,7 @@ const search = async () => {
     const now = new Date()
     const eq = listContent.map((data: eqvol) => {
         const occurTime = new Date(data.updated)
-        const diff = Number((now - occurTime) / (60*1000))
+        const diff = Number((now.getTime() - occurTime.getTime()) / (60*1000))
         if (data.title.includes("震源・震度") && diff <= 3) {
             return data.id
         } else {
