@@ -48,7 +48,7 @@ const search = async () => {
         const intensity = eqDataContent.Intensity.Observation.MaxInt
         console.log(latitude, longtitude)
         const intRange = ['4', '5-', '5+', '6-']
-        if (intRange.includes(intensity) || true) {
+        if (intRange.includes(intensity)) {
             const places = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longtitude}&radius=15000&types=university&language=ja&key=${config.get("maps_api_key")}`)
             const placeData = JSON.parse(JSON.stringify(places.data))
             if (placeData.status === "ZERO_RESULTS") {
